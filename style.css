@@ -1,0 +1,31 @@
+.mainCont{border: 1px solid black;
+	height: 900px;
+}
+.gameArea{border: 1px solid red; 
+	width: 56em;
+	height: 100%;
+}
+.gameBoard{border: 1px solid purple;
+	margin: 0 auto;
+	display: table;
+}
+.row{
+	display: table-row;  
+}
+.square{border: 1px solid purple;
+	font-size: 100%;
+	display: table-cell;
+	height: 10em;
+	width: 10em;
+	text-align: center;
+	vertical-align: middle;
+}
+.whosTurn{
+	display: table-cell;
+}
+.square:hover{
+	cursor: pointer;
+	background-color: grey;
+	color: white;
+}
+
