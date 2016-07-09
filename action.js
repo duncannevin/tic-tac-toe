@@ -16,6 +16,7 @@
 	buildBoard();	
 
 	var player = 1;
+	var turn = 0;
 	var winningObj = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
 	var weHaveAWinner;
 //runs through each player to control whos turn it is...
@@ -24,11 +25,12 @@
 		$('.gameArea').append(buildBoard());
 		winningObj = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
 		player = 1;
-		turn = 1;
+		turn = 0;
 	}
 
 	var someOneWon = function(who){
 		alert(who + ' Won!');
+		$('.square').removeAttr('onclick');
 		$('.square').empty();
 		$('#5').append('<a>Play Again?</a>');
 		$('#5 a').click(function(){
@@ -46,24 +48,23 @@
 			weHaveAWinner = _.every(miniArray, (index)=>{
 				return index === who;
 			})
-			if(weHaveAWinner)someOneWon(who);
+			if(weHaveAWinner)return someOneWon(who);
 		})
 	}
 
+	var controlStuff = function(id, who){
+		document.getElementById(id).innerHTML = who;
+		turn++;
+		player = 2;
+		checkForWinner(who, id);
+		document.getElementById(id).removeAttribute('onclick');
+	}
+
 	var playGame = function(id){
-		console.log(id);
 		if(player === 1){
-			document.getElementById(id).innerHTML = 'X';
-			player = 2;
-			checkForWinner('X', id);
-			console.log(winningObj);
-			document.getElementById(id).removeAttribute('onclick');
+			controlStuff(id, 'X');
 		}else{
-			document.getElementById(id).innerHTML = 'O';
-			player = 1;
-			checkForWinner('O', id);
-			console.log(winningObj);
-			document.getElementById(id).removeAttribute('onclick');
+			controlStuff(id, 'O');
 		}	
 	}
 
