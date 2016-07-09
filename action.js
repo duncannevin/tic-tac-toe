@@ -7,7 +7,7 @@
 		for(var j = 1; j<=3; j++){
 			$('.gameBoard').append('<div class="boardRow' + j + ' row"></div>');	
 				for(var i = 1; i<=3; i++){			
-					$('.boardRow' + j).append('<div id="' + placeId + '" class="sq' + placeId + ' square playable" onclick="playGame(' + placeId +')">' + placeId + '</div>');
+					$('.boardRow' + j).append('<div id="' + placeId + '" class="sq' + placeId + ' square playable" onclick="playGame(' + placeId +')"></div>');
 					placeId++; 
 				//creates better CSS to eliminate the outside border
 				}
