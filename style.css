@@ -1,22 +1,26 @@
 .mainCont{border: 1px solid black;
-	height: 900px;
 }
-.gameArea{border: 1px solid red; 
-	width: 56em;
-	height: 100%;
+.mainStuff{
+	padding: 10em 0em 10em 0em;
+	background-color: rgb(51, 153, 102);
 }
-.gameBoard{border: 1px solid purple;
+.row{
+	height: 33.33%
+}
+.gameBoard{
 	margin: 0 auto;
 	display: table;
+	height: 50em;
+	width: 50em;
 }
 .row{
 	display: table-row;  
 }
-.square{border: 1px solid purple;
+.square{
+	height: 33%;
+	width: 33%;
 	font-size: 100%;
 	display: table-cell;
-	height: 10em;
-	width: 10em;
 	text-align: center;
 	vertical-align: middle;
 }
@@ -28,4 +32,9 @@
 	background-color: grey;
 	color: white;
 }
-
+.sq1, .sq2, .sq3, .sq4, .sq5, .sq6{
+	border-bottom: 1px solid white;
+}
+.sq1, .sq2, .sq4, .sq5, .sq7, .sq8{
+	border-right: 1px solid white;
+} 
