@@ -55,7 +55,6 @@
 	var controlStuff = function(id, who){
 		document.getElementById(id).innerHTML = who;
 		turn++;
-		player = 2;
 		checkForWinner(who, id);
 		document.getElementById(id).removeAttribute('onclick');
 	}
@@ -63,8 +62,10 @@
 	var playGame = function(id){
 		if(player === 1){
 			controlStuff(id, 'X');
+			player = 2;
 		}else{
 			controlStuff(id, 'O');
+			player = 1;
 		}	
 	}
 
