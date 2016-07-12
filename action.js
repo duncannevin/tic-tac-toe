@@ -1,3 +1,5 @@
+//script is in strict mode...
+"use strict";
 //creates the game board	
 	var buildBoard = function(){
 		$('.gameArea').append('<div class="gameBoard"></div>');
