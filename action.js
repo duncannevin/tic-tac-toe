@@ -44,7 +44,7 @@
 //are occupied it calls the someoneWon function. 
 	var checkForWinner = function(who, id){
 		//runs through the winningObj(should be changed to winningArr)
-		_.each(winningObj, (miniArray)=>{
+		return _.each(winningObj, (miniArray)=>{
 			//runs through the subarrays replacing the numbers that match the
 			//current id with a string to identify the player on that spot. 
 			_.each(miniArray, (value, index)=>{
@@ -60,15 +60,14 @@
 			})
 			if(weHaveAWinner)return someOneWon(who);
 		})
+		//checks for ties...
+		if(turn === 9)return someOneWon('No one, ')
 	}
 //this function is the control panel for the program. It enters the players
 //symbol and switches whos turn it is.
 	var controlStuff = function(id, who){
 		//Appends the square with the player symbol
 		document.getElementById(id).innerHTML = who;
-		//keeps track of how many times the players have gone, this is to control
-		//ties, ***which is not implemented yet******
-		turn++;
 		//runs checkforWinner funciton
 		checkForWinner(who, id);
 		//removes the onclick attribute from the current square
@@ -76,13 +75,17 @@
 	}
 //this is the funciton from the onclick attribute
 	var playGame = function(id){
+		//keeps track of how many times the players have gone, this is to control
+		//ties.
+		turn ++;
 		if(player === 1){
 			controlStuff(id, 'X');
 			player = 2;
 		}else{
 			controlStuff(id, 'O');
 			player = 1;
-		}	
+		}
+		console.log(turn);	
 	}
 
 
