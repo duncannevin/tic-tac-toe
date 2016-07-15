@@ -20,6 +20,7 @@
 	var turn = 0;
 	var winningObj = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
 	var weHaveAWinner;
+	var whoPlays;
 //Resets board after someone wins.
 	var resetBoard = function(){
 		$('.gameBoard').remove();//removes current game board
@@ -44,7 +45,8 @@
 //are occupied it calls the someoneWon function. 
 	var checkForWinner = function(who, id){
 		//runs through the winningObj(should be changed to winningArr)
-		return _.each(winningObj, (miniArray)=>{
+		var winner = false;
+	 	_.each(winningObj, (miniArray)=>{
 			//runs through the subarrays replacing the numbers that match the
 			//current id with a string to identify the player on that spot. 
 			_.each(miniArray, (value, index)=>{
@@ -58,10 +60,13 @@
 			weHaveAWinner = _.every(miniArray, (index)=>{
 				return index === who;
 			})
-			if(weHaveAWinner)return someOneWon(who);
+			if(weHaveAWinner){
+				winner = true;
+				someOneWon(who);
+			}
 		})
 		//checks for ties...
-		if(turn === 9)return someOneWon('No one, ')
+		if(turn === 9 && winner === false)return someOneWon('No one, ');
 	}
 //this function is the control panel for the program. It enters the players
 //symbol and switches whos turn it is.
@@ -81,12 +86,12 @@
 		if(player === 1){
 			controlStuff(id, 'X');
 			player = 2;
-		}else{
+		}else if(player === 2){
 			controlStuff(id, 'O');
 			player = 1;
 		}
-		console.log(turn);	
-	}
+	};
+
 
 
 
